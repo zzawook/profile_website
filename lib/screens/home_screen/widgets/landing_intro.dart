@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profile_website/screens/home_screen/widgets/flashing_text_cursor.dart';
 
 class LandingIntro extends StatelessWidget {
   const LandingIntro({super.key});
@@ -38,13 +39,17 @@ class LandingIntro extends StatelessWidget {
                         fontWeight: FontWeight.w900,
                       ),
                     ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    FlashingTextCursor(),
                   ],
                 ),
                 Text(
                   introMessage,
                   style: const TextStyle(
                     color: Color(0xff9ca4ca),
-                    fontSize: 25,
+                    fontSize: 23,
                   ),
                 ),
               ],

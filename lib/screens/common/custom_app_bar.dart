@@ -54,6 +54,15 @@ class CustomAppBar extends StatelessWidget {
               size: 40,
             ),
           ),
+          IconButton(
+            onPressed: onResumeScreenPress,
+            tooltip: "Blog",
+            icon: const Icon(
+              Icons.chat_outlined,
+              color: Color(0xff9ca4ca),
+              size: 40,
+            ),
+          ),
         ],
       ),
     );
