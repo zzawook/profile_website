@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CustomTaskBar extends StatelessWidget {
   const CustomTaskBar({super.key});

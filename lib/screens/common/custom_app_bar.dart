@@ -43,58 +43,87 @@ class CustomAppBar extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          IconButton(
-            onPressed: () {
-              context.goNamed('home');
-            },
-            tooltip: "Home",
-            icon: Icon(
-              Icons.home,
-              color: currentLocation == '/'
-                  ? const Color(0xff9ca4ca)
-                  : const Color(0xff3d496b),
-              size: 40,
-            ),
+          Column(
+            children: [
+              IconButton(
+                onPressed: () {
+                  context.goNamed('home');
+                },
+                tooltip: "Home",
+                icon: Icon(
+                  Icons.home,
+                  color: currentLocation == '/'
+                      ? const Color(0xff9ca4ca)
+                      : const Color(0xff3d496b),
+                  size: 40,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  context.goNamed('resume');
+                },
+                tooltip: "Resume",
+                icon: Icon(
+                  Icons.article_outlined,
+                  color: currentLocation == '/resume'
+                      ? const Color(0xff9ca4ca)
+                      : const Color(0xff3d496b),
+                  size: 40,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  context.goNamed("project");
+                },
+                tooltip: "Projects",
+                icon: Icon(
+                  Icons.code_rounded,
+                  color: currentLocation == '/project'
+                      ? const Color(0xff9ca4ca)
+                      : const Color(0xff3d496b),
+                  size: 40,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  context.goNamed("blog");
+                },
+                tooltip: "Blog",
+                icon: Icon(
+                  Icons.chat_outlined,
+                  color: currentLocation == '/blog'
+                      ? const Color(0xff9ca4ca)
+                      : const Color(0xff3d496b),
+                  size: 40,
+                ),
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: () {
-              context.goNamed('resume');
-            },
-            tooltip: "Resume",
-            icon: Icon(
-              Icons.article_outlined,
-              color: currentLocation == '/resume'
-                  ? const Color(0xff9ca4ca)
-                  : const Color(0xff3d496b),
-              size: 40,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              context.goNamed("project");
-            },
-            tooltip: "Projects",
-            icon: Icon(
-              Icons.code_rounded,
-              color: currentLocation == '/project'
-                  ? const Color(0xff9ca4ca)
-                  : const Color(0xff3d496b),
-              size: 40,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              context.goNamed("blog");
-            },
-            tooltip: "Blog",
-            icon: Icon(
-              Icons.chat_outlined,
-              color: currentLocation == '/blog'
-                  ? const Color(0xff9ca4ca)
-                  : const Color(0xff3d496b),
-              size: 40,
-            ),
-          ),
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                  onPressed: () {
+                    context.goNamed("admin");
+                  },
+                  style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Color(0xff23283d)),
+                    foregroundColor: WidgetStatePropertyAll(Color(0xff23283d)),
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                        side: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: 80,
+                    height: 80,
+                  ))
+            ],
+          ))
+          
         ],
       ),
     );

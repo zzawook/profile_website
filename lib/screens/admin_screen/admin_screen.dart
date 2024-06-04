@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:profile_website/screens/common/custom_app_bar.dart';
 import 'package:profile_website/screens/common/custom_task_bar.dart';
 
-class BlogScreen extends StatelessWidget {
-  const BlogScreen({super.key});
+class AdminScreen extends StatelessWidget {
+  const AdminScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

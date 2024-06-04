@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:profile_website/screens/resume_screen/widget/resume_webview.dart';
 
 import 'dart:html' as html;
