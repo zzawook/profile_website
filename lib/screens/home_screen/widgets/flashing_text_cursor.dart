@@ -10,13 +10,22 @@ class FlashingTextCursor extends StatefulWidget {
 
 class _FlashingTextCursorState extends State<FlashingTextCursor> {
   bool isCursorVisible = true;
-  late Timer timer;
+  late Timer? timer;
 
   @override
   initState() {
     super.initState();
     timer =
         Timer.periodic(const Duration(milliseconds: 500), reverseCursorVisible);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    if (timer != null) {
+      timer!.cancel();
+    }
+    timer = null;
   }
 
   void reverseCursorVisible(Timer timer) {

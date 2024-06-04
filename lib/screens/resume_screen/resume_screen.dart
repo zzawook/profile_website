@@ -2,25 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:profile_website/screens/common/custom_app_bar.dart';
 import 'package:profile_website/screens/common/custom_task_bar.dart';
-import 'package:profile_website/screens/home_screen/widgets/landing_intro.dart';
+import 'package:profile_website/screens/resume_screen/widget/resume_container.dart';
 
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class ResumeScreen extends StatelessWidget {
+  const ResumeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          decoration: const BoxDecoration(
-            color: Color(0xff23283d),
-          ),
+        decoration: const BoxDecoration(
+          color: Color(0xff23283d),
+        ),
         child: Column(
-            children: [
+          children: [
             const CustomTaskBar(),
-              Expanded(
-                child: Row(
-                  children: [
+            Expanded(
+              child: Row(
+                children: [
                   CustomAppBar(
                     currentLocation: GoRouter.of(context)
                         .routerDelegate
@@ -28,15 +27,13 @@ class HomeScreen extends StatelessWidget {
                         .uri
                         .toString(),
                   ),
-                  const LandingIntro(),
-                  ],
-                ),
+                  const ResumeContainer(),
+                ],
               ),
-            ],
+            ),
+          ],
         ),
       ),
     );
   }
-
-  
 }

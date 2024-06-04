@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  final String currentLocation;
 
-  void onHomeScreenPress() {}
+  const CustomAppBar({
+    super.key,
+    required this.currentLocation,
+  });
 
-  void onProjectScreenPress() {}
+  void onHomeScreenPress(BuildContext context) {
+    context.goNamed('home');
+  }
 
-  void onResumeScreenPress() {}
+  void onProjectScreenPress(BuildContext context) {
+    context.goNamed('project');
+  }
+
+  void onResumeScreenPress(BuildContext context) {
+    context.goNamed("resume");
+  }
+
+  void onBlogScreenPress(BuildContext context) {
+    context.goNamed("blog");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +32,7 @@ class CustomAppBar extends StatelessWidget {
         color: Color(0xff23283d),
         border: Border(
           right: BorderSide(
-            width: 0.5,
+            width: 1,
             color: Color(0xff1b1e2f),
           ),
         ),
@@ -28,38 +44,54 @@ class CustomAppBar extends StatelessWidget {
             height: 10,
           ),
           IconButton(
-            onPressed: onHomeScreenPress,
+            onPressed: () {
+              context.goNamed('home');
+            },
             tooltip: "Home",
-            icon: const Icon(
+            icon: Icon(
               Icons.home,
-              color: Color(0xff9ca4ca),
+              color: currentLocation == '/'
+                  ? const Color(0xff9ca4ca)
+                  : const Color(0xff3d496b),
               size: 40,
             ),
           ),
           IconButton(
-            onPressed: onProjectScreenPress,
+            onPressed: () {
+              context.goNamed('resume');
+            },
             tooltip: "Resume",
-            icon: const Icon(
+            icon: Icon(
               Icons.article_outlined,
-              color: Color(0xff9ca4ca),
+              color: currentLocation == '/resume'
+                  ? const Color(0xff9ca4ca)
+                  : const Color(0xff3d496b),
               size: 40,
             ),
           ),
           IconButton(
-            onPressed: onResumeScreenPress,
+            onPressed: () {
+              context.goNamed("project");
+            },
             tooltip: "Projects",
-            icon: const Icon(
+            icon: Icon(
               Icons.code_rounded,
-              color: Color(0xff9ca4ca),
+              color: currentLocation == '/project'
+                  ? const Color(0xff9ca4ca)
+                  : const Color(0xff3d496b),
               size: 40,
             ),
           ),
           IconButton(
-            onPressed: onResumeScreenPress,
+            onPressed: () {
+              context.goNamed("blog");
+            },
             tooltip: "Blog",
-            icon: const Icon(
+            icon: Icon(
               Icons.chat_outlined,
-              color: Color(0xff9ca4ca),
+              color: currentLocation == '/blog'
+                  ? const Color(0xff9ca4ca)
+                  : const Color(0xff3d496b),
               size: 40,
             ),
           ),

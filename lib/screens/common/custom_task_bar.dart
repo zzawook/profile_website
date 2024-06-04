@@ -11,7 +11,7 @@ class CustomTaskBar extends StatelessWidget {
         color: Color(0xff23283d),
         border: Border(
           bottom: BorderSide(
-            width: 0.5,
+            width: 1,
             color: Color(0xff1b1e2f),
           ),
         ),
