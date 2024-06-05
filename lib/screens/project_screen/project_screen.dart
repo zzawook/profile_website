@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:profile_website/screens/common/custom_app_bar.dart';
 import 'package:profile_website/screens/common/custom_task_bar.dart';
+import 'package:profile_website/screens/project_screen/widget/project_container.dart';
 
-class ProjectScreen extends StatelessWidget {
+class ProjectScreen extends StatefulWidget {
   const ProjectScreen({super.key});
 
+  @override
+  State<ProjectScreen> createState() => _ProjectScreenState();
+}
+
+class _ProjectScreenState extends State<ProjectScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +33,7 @@ class ProjectScreen extends StatelessWidget {
                         .uri
                         .toString(),
                   ),
-                  Container(),
+                  const ProjectContainer(),
                 ],
               ),
             ),

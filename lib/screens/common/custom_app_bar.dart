@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:profile_website/screens/common/route_button.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String currentLocation;
@@ -8,22 +9,6 @@ class CustomAppBar extends StatelessWidget {
     super.key,
     required this.currentLocation,
   });
-
-  void onHomeScreenPress(BuildContext context) {
-    context.goNamed('home');
-  }
-
-  void onProjectScreenPress(BuildContext context) {
-    context.goNamed('project');
-  }
-
-  void onResumeScreenPress(BuildContext context) {
-    context.goNamed("resume");
-  }
-
-  void onBlogScreenPress(BuildContext context) {
-    context.goNamed("blog");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,57 +30,33 @@ class CustomAppBar extends StatelessWidget {
           ),
           Column(
             children: [
-              IconButton(
-                onPressed: () {
-                  context.goNamed('home');
-                },
+              RouteButton(
+                routeName: 'home',
+                routeLocation: "/",
+                currentLocation: currentLocation,
                 tooltip: "Home",
-                icon: Icon(
-                  Icons.home,
-                  color: currentLocation == '/'
-                      ? const Color(0xff9ca4ca)
-                      : const Color(0xff3d496b),
-                  size: 40,
-                ),
+                icon: Icons.home,
               ),
-              IconButton(
-                onPressed: () {
-                  context.goNamed('resume');
-                },
+              RouteButton(
+                routeName: 'resume',
+                routeLocation: "/resume",
+                currentLocation: currentLocation,
                 tooltip: "Resume",
-                icon: Icon(
-                  Icons.article_outlined,
-                  color: currentLocation == '/resume'
-                      ? const Color(0xff9ca4ca)
-                      : const Color(0xff3d496b),
-                  size: 40,
-                ),
+                icon: Icons.article_outlined,
               ),
-              IconButton(
-                onPressed: () {
-                  context.goNamed("project");
-                },
+              RouteButton(
+                routeName: 'project',
+                routeLocation: "/project",
+                currentLocation: currentLocation,
                 tooltip: "Projects",
-                icon: Icon(
-                  Icons.code_rounded,
-                  color: currentLocation == '/project'
-                      ? const Color(0xff9ca4ca)
-                      : const Color(0xff3d496b),
-                  size: 40,
-                ),
+                icon: Icons.code_outlined,
               ),
-              IconButton(
-                onPressed: () {
-                  context.goNamed("blog");
-                },
+              RouteButton(
+                routeName: 'blog',
+                routeLocation: "/blog",
+                currentLocation: currentLocation,
                 tooltip: "Blog",
-                icon: Icon(
-                  Icons.chat_outlined,
-                  color: currentLocation == '/blog'
-                      ? const Color(0xff9ca4ca)
-                      : const Color(0xff3d496b),
-                  size: 40,
-                ),
+                icon: Icons.chat_outlined,
               ),
             ],
           ),
@@ -123,9 +84,9 @@ class CustomAppBar extends StatelessWidget {
                   ))
             ],
           ))
-          
         ],
       ),
     );
   }
 }
+

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class ResumeWebview extends StatelessWidget {
+class ResumePdfview extends StatelessWidget {
   final String pdfUrl;
 
-  const ResumeWebview({
+  const ResumePdfview({
     super.key,
     required this.pdfUrl,
   });
