@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:profile_website/screens/blog_screen/widget/blog_container.dart';
 import 'package:profile_website/screens/common/custom_app_bar.dart';
 import 'package:profile_website/screens/common/custom_task_bar.dart';
 
@@ -26,7 +27,7 @@ class BlogScreen extends StatelessWidget {
                         .uri
                         .toString(),
                   ),
-                  Container(),
+                  const BlogContainer(),
                 ],
               ),
             ),

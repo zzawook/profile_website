@@ -16,6 +16,7 @@ class ProjectInfo extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 15,
+          vertical: 10,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,6 +29,9 @@ class ProjectInfo extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             Text(
               project.description,
               style: const TextStyle(
@@ -36,7 +40,7 @@ class ProjectInfo extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,

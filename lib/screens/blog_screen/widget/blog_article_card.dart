@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:profile_website/models/project.dart';
-import 'package:profile_website/screens/project_screen/widget/project_info.dart';
-import 'package:profile_website/screens/project_screen/widget/redirect_button.dart';
+import 'package:profile_website/models/blog_article.dart';
+import 'package:profile_website/screens/blog_screen/widget/blog_article_info.dart';
+import 'package:profile_website/screens/blog_screen/widget/open_url_button.dart';
 
-class ProjectCard extends StatelessWidget {
-  final Project project;
-
-  const ProjectCard({
+class BlogArticleCard extends StatelessWidget {
+  const BlogArticleCard({
     super.key,
-    required this.project,
+    required this.blogArticle,
   });
+
+  final BlogArticle blogArticle;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +23,12 @@ class ProjectCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ProjectInfo(project: project),
+          BlogArticleInfo(blogArticle: blogArticle),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              RedirectButton(
-                githubUrl: project.githubURL,
-                demoUrl: project.demoURL,
+              OpenUrlButton(
+                url: blogArticle.url,
               ),
             ],
           ),

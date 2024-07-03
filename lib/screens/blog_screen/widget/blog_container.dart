@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:profile_website/models/project.dart';
-import 'package:profile_website/screens/project_screen/widget/project_card.dart';
+import 'package:profile_website/models/blog_article.dart';
+import 'package:profile_website/screens/blog_screen/widget/blog_article_card.dart';
 import 'package:profile_website/services/api_services.dart';
 
-class ProjectContainer extends StatefulWidget {
-  const ProjectContainer({super.key});
+class BlogContainer extends StatefulWidget {
+  const BlogContainer({super.key});
 
   @override
-  State<ProjectContainer> createState() => _ProjectContainerState();
+  State<BlogContainer> createState() => _BlogContainerState();
 }
 
-class _ProjectContainerState extends State<ProjectContainer> {
+class _BlogContainerState extends State<BlogContainer> {
   bool isProjectDataLoaded = false;
-  late List<Project> projectData;
+  late List<BlogArticle> blogArticleData;
 
   @override
   void initState() {
@@ -21,7 +21,7 @@ class _ProjectContainerState extends State<ProjectContainer> {
   }
 
   void getProjectData() async {
-    projectData = await APIService.getDummyProjectData();
+    blogArticleData = await APIService.getDummyBlogArticleData();
     setState(() {
       isProjectDataLoaded = true;
     });
@@ -45,13 +45,13 @@ class _ProjectContainerState extends State<ProjectContainer> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Projects",
+                      Text("Blog",
                           style: TextStyle(
                             fontSize: 98,
                             color: Colors.white,
                           )),
                       Text(
-                          "Here are the lists of projects I've coded personally to solve problems around me. Sometimes it did solve the problem, and sometimes it didn't went so far. But at least each of them helped me to step up as a better programmer every time.",
+                          "I write blogs to remember lessons from day to day programmings. You can steal a glance here.",
                           overflow: TextOverflow.clip,
                           style: TextStyle(
                             color: Colors.white60,
@@ -68,13 +68,11 @@ class _ProjectContainerState extends State<ProjectContainer> {
                   child: SizedBox(
                     width: 1200,
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 20,
-                      ),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Column(
                         children: [
-                          for (Project project in projectData)
-                            ProjectCard(project: project),
+                          for (BlogArticle article in blogArticleData)
+                            BlogArticleCard(blogArticle: article),
                         ],
                       ),
                     ),

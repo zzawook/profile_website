@@ -15,9 +15,10 @@ class PdfDownloadButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onDownloadPdfPressed,
       style: const ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(Color(0xff395293)),
+        foregroundColor: WidgetStatePropertyAll(Colors.black),
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.zero,
