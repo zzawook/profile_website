@@ -45,8 +45,7 @@ class ProjectInfo extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                for (String language in project.languages)
-                  LanguageCard(language: language),
+                LanguageCard(language: project.language),
                 const SizedBox(width: 10),
                 Text(
                   "Last updated on ${project.lastUpdated.month}/${project.lastUpdated.day}/${project.lastUpdated.year}",

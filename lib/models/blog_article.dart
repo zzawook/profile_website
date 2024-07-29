@@ -6,4 +6,12 @@ class BlogArticle {
     required this.description,
     required this.url,
   });
+
+  factory BlogArticle.fromJson(Map<String, dynamic> json) {
+    return BlogArticle(
+      title: json['title'],
+      description: json['description'],
+      url: json['url'],
+    );
+  }
 }

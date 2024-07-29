@@ -21,7 +21,7 @@ class _ProjectContainerState extends State<ProjectContainer> {
   }
 
   void getProjectData() async {
-    projectData = await APIService.getDummyProjectData();
+    projectData = await APIService.getProjectData();
     setState(() {
       isProjectDataLoaded = true;
     });
@@ -33,8 +33,7 @@ class _ProjectContainerState extends State<ProjectContainer> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Expanded(
-            child: Column(
+          const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
@@ -42,6 +41,8 @@ class _ProjectContainerState extends State<ProjectContainer> {
                     left: 50,
                     right: 90,
                   ),
+                child: SizedBox(
+                  width: 500,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -51,7 +52,7 @@ class _ProjectContainerState extends State<ProjectContainer> {
                             color: Colors.white,
                           )),
                       Text(
-                          "Here are the lists of projects I've coded personally to solve problems around me. Sometimes it did solve the problem, and sometimes it didn't went so far. But at least each of them helped me to step up as a better programmer every time.",
+                          "Here are the lists of projects I've coded as an endeavor to solve problems around me, all of which helped me to step up as a better programmer every time.",
                           overflow: TextOverflow.clip,
                           style: TextStyle(
                             color: Colors.white60,
@@ -59,9 +60,9 @@ class _ProjectContainerState extends State<ProjectContainer> {
                           ))
                     ],
                   ),
+                ),
                 )
-              ],
-            ),
+            ],
           ),
           isProjectDataLoaded
               ? SingleChildScrollView(
@@ -69,7 +70,7 @@ class _ProjectContainerState extends State<ProjectContainer> {
                     width: 1200,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        top: 20,
+                        top: 50, bottom: 50
                       ),
                       child: Column(
                         children: [
@@ -81,9 +82,6 @@ class _ProjectContainerState extends State<ProjectContainer> {
                   ),
                 )
               : const CircularProgressIndicator(),
-          const Expanded(
-            child: SizedBox(),
-          )
         ],
       ),
     );

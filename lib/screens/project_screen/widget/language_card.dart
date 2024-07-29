@@ -10,7 +10,9 @@ class LanguageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return language == ""
+        ? const SizedBox()
+        : Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Color(0xff395293),

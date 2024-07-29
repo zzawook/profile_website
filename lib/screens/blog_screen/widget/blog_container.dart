@@ -17,11 +17,12 @@ class _BlogContainerState extends State<BlogContainer> {
   @override
   void initState() {
     super.initState();
-    getProjectData();
+    getBlogData();
   }
 
-  void getProjectData() async {
-    blogArticleData = await APIService.getDummyBlogArticleData();
+  void getBlogData() async {
+    blogArticleData = await APIService.getBlogArticleData();
+    print(blogArticleData);
     setState(() {
       isProjectDataLoaded = true;
     });
@@ -33,8 +34,7 @@ class _BlogContainerState extends State<BlogContainer> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Expanded(
-            child: Column(
+          const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
@@ -42,6 +42,8 @@ class _BlogContainerState extends State<BlogContainer> {
                     left: 50,
                     right: 90,
                   ),
+                child: SizedBox(
+                  width: 500,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -51,17 +53,18 @@ class _BlogContainerState extends State<BlogContainer> {
                             color: Colors.white,
                           )),
                       Text(
-                          "I write blogs to remember lessons from day to day programmings. You can steal a glance here.",
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                            color: Colors.white60,
-                            fontSize: 18,
-                          ))
+                        "I write blogs to remember lessons from day to day programmings. You can steal a glance here.",
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                          color: Colors.white60,
+                          fontSize: 18,
+                        ),
+                      ),
                     ],
                   ),
+                ),
                 )
-              ],
-            ),
+            ],
           ),
           isProjectDataLoaded
               ? SingleChildScrollView(
@@ -79,9 +82,6 @@ class _BlogContainerState extends State<BlogContainer> {
                   ),
                 )
               : const CircularProgressIndicator(),
-          const Expanded(
-            child: SizedBox(),
-          )
         ],
       ),
     );
