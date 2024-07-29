@@ -21,7 +21,7 @@ jobs:
       - name: Build and Push Docker Image for Profile Website
         uses: docker/build-push-action@v2
         with:
-          context: profile_website_web
+          context: profile_website
           file: ./Dockerfile
           push: true
           tags: kjaehyeok21/profile_website_web:latest
