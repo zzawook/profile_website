@@ -16,7 +16,6 @@ class APIService {
       List<Project> projectData = [];
       final body = jsonDecode(response.body);
       for (var project in body) {
-        print(project);
         projectData.add(Project.fromJson(project));
       }
       projectData.sort((a, b) => b.lastUpdated.compareTo(a.lastUpdated));

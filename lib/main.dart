@@ -46,6 +46,19 @@ class MyApp extends StatelessWidget {
         ),
       ]),
       title: "kjaehyeok21's website",
+      builder: (context, child) {
+        final mediaQueryData = MediaQuery.of(context);
+        final scale = mediaQueryData.textScaler.clamp(
+          minScaleFactor: 1.0,
+          maxScaleFactor: 1.0, 
+        );
+        return MediaQuery(
+          data: mediaQueryData.copyWith(
+            textScaler: scale,
+          ),
+          child: child!,
+        );
+      },
     );
   }
 }
