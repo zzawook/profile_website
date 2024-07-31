@@ -24,6 +24,7 @@ class _BlogContainerState extends State<BlogContainer> {
     blogArticleData = await APIService.getBlogArticleData();
     setState(() {
       isProjectDataLoaded = true;
+      blogArticleData = blogArticleData;
     });
   }
 

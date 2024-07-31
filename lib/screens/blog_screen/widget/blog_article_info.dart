@@ -32,7 +32,7 @@ class BlogArticleInfo extends StatelessWidget {
               height: 10,
             ),
             Text(
-              blogArticle.description,
+              blogArticle.subtitle,
               style: const TextStyle(
                 color: Color(0xff9ca4ca),
                 fontSize: 16,
