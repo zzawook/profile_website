@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:profile_website/models/blog_article.dart';
 import 'package:profile_website/models/project.dart';
@@ -47,5 +48,41 @@ class APIService {
       return response.body.replaceAll('"', '');
     }
     return "";
+  }
+
+  static Future<bool> authenticateUser(String password) async {
+    String url = "$rootDomain/auth";
+    Response response = await post(Uri.parse(url), body: password);
+
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
+  static Future<String> uploadResume(String? password, Uint8List? resume) async {
+    String url = "$rootDomain/resume";
+    MultipartRequest request = MultipartRequest(
+      'POST',
+      Uri.parse(url),
+    );
+    request.files.add(
+      MultipartFile.fromBytes(
+        'resume',
+        resume!,
+        filename: 'resume.pdf',
+      ),
+    );
+    request.fields['password'] = password!;
+
+    StreamedResponse streamedResponse = await request.send();
+    Response response = await Response.fromStream(streamedResponse);
+
+    if (response.statusCode == 200) {
+      return response.body.replaceAll('"', '');
+    } else if (response.statusCode == 401) {
+      return "Failed authentication";
+    }
+    return "Resume Upload Failed";
   }
 }

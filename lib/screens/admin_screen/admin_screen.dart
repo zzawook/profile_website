@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:profile_website/screens/admin_screen/widget/resume_upload_container.dart';
 import 'package:profile_website/screens/common/custom_app_bar.dart';
 import 'package:profile_website/screens/common/custom_task_bar.dart';
 
 class AdminScreen extends StatelessWidget {
-  const AdminScreen({super.key});
+
+  final String? password;
+  const AdminScreen({
+    super.key,
+    required this.password,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,7 @@ class AdminScreen extends StatelessWidget {
                         .uri
                         .toString(),
                   ),
-                  Container(),
+                  ResumeUploadContainer(password: password),
                 ],
               ),
             ),

@@ -42,7 +42,9 @@ class MyApp extends StatelessWidget {
         GoRoute(
           path: "/admin",
           name: "admin",
-          builder: (context, state) => const AdminScreen(),
+          builder: (context, state) => AdminScreen(
+            password: state.uri.queryParameters['password'],
+          ),
         ),
       ]),
       title: "kjaehyeok21's website",

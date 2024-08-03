@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:profile_website/screens/admin_screen/widget/auth_result.dart';
+import 'package:profile_website/screens/common/password_dialog.dart';
 import 'package:profile_website/screens/common/route_button.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -12,6 +14,18 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void navigateToAdmin(bool result) {
+      if (result) {
+        context.goNamed("admin");
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Authentication failed"),
+          ),
+        );
+      }
+    }
+
     return Container(
       decoration: const BoxDecoration(
         color: Color(0xff23283d),
@@ -65,8 +79,20 @@ class CustomAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
-                  onPressed: () {
-                    context.goNamed("admin");
+                  onPressed: () async {
+                    final AuthResult result = await showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return PasswordDialog(
+                            onAuthenticationResult: navigateToAdmin);
+                      },
+                    );
+
+                    if (result.isSuccessful) {
+                      context.goNamed("admin", queryParameters: {
+                        "password": result.password,
+                      });
+                    }
                   },
                   style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(Color(0xff23283d)),
